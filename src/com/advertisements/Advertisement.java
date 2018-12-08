@@ -1,5 +1,7 @@
 package com.advertisements;
 
+import java.util.logging.Logger;
+
 public class Advertisement implements Advertisements{
     private int id;
     private int owner;
@@ -13,6 +15,37 @@ public class Advertisement implements Advertisements{
         this.owner = owner;
         this.title = title;
         this.details = details;
+    }
+
+
+    @Override
+    public void addHighLight(){
+        this.title.toUpperCase();
+    }
+
+    @Override
+    public void removeHighLight() {
+        this.title.toLowerCase();
+    }
+
+    @Override
+    public void delete(Advertisement a) {
+
+    }
+
+    @Override
+    public void list() {
+
+    }
+
+    @Override
+    public void add(Advertisement a) {
+
+    }
+
+    @Override
+    public void modify(Advertisement a) {
+
     }
 
     public int getOwner() {
