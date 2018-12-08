@@ -6,13 +6,14 @@ import com.users.Employee;
 import com.users.Employer;
 import com.users.User;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    List<User> userList = FileManagger.getEployees();
+    List<User> userList = FileManagger.getUsers();
     List<Advertisement> adList = new LinkedList<>();
 
     public static void main(String[] args) {
@@ -21,6 +22,7 @@ public class Main {
 
     private void init() {
         showMenu();
+        FileManagger.saveUsers(userList);
     }
 
     private void showMenu() {
@@ -34,24 +36,27 @@ public class Main {
                 choice = input.nextInt();
                 switch(choice){
                     case 1:
+                        System.out.println(userList);
                         printRegisterMenuForEmployee();
                         Employee ee = (Employee) createEmployee();
-                        System.out.println("asd");
                         userList.add(ee);
                         ee.setID(userList.size());
-                        FileManagger.saveEmployees(userList);
-                        System.out.println(ee.getID());
-                        System.out.println(userList);
+                        FileManagger.saveUsers(userList);
+                        System.out.println(ee.getUserRole());
+
                         System.out.println("Added?");
                         System.out.println(
                                 userList.get(0).toString()
                         );
+                        System.out.println("mia  fasz vaaaan");
+                        FileManagger.saveUsers(userList);
                         break;
                     case 2:
                         printRegisterMenuForEmployer();
                         Employer er = (Employer) createEmployer();
                         userList.add(er);
                         er.setID(userList.size());
+                        FileManagger.saveUsers(userList);
                         System.out.println(er.getID());
                         System.out.println(userList.get(0).toString()
                         );
@@ -86,7 +91,7 @@ public class Main {
         companyName = input.nextLine();
         email = input.nextLine();
         location = input.nextLine();
-        return new Employer(1,userName,password,companyName,email,location);
+        return new Employer(2,userName,password,companyName,email,location);
     }
 
 
@@ -102,7 +107,7 @@ public class Main {
         name = input.nextLine();
         age = Integer.parseInt(input.nextLine());
         phoneNumber = Integer.parseInt(input.nextLine());
-        return new Employee(2,userName,password,name,age,phoneNumber);
+        return new Employee(1,userName,password,name,age,phoneNumber);
     }
 
     private int validationLoginEmployee(){

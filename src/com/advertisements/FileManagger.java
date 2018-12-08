@@ -1,5 +1,6 @@
 package com.advertisements;
 
+import com.users.Admin;
 import com.users.Employee;
 import com.users.Employer;
 import com.users.User;
@@ -48,26 +49,26 @@ public class FileManagger {
         return aList;
     }
 
-    public static void saveEmployees(List<User> aList) {
-        Employee[] array = new Employee[aList.size()];
+    public static void saveUsers(List<User> aList){
+        User[] array = new User[aList.size()];
         array = aList.toArray(array);
-
         String writeString = "";
-        for (int i = 0; i < aList.size(); i++) {
-            writeString += array[i].getID() + ";";
-            writeString += array[i].getUserRole() + ";";
-            writeString += array[i].getUsername() + ";";
-            writeString += array[i].getPassword() + ";";
-            writeString += array[i].getName() + ";";
-            writeString += array[i].getAge() + ";";
-            writeString += array[i].getPhoneNumber() + ";";
-            writeString += "\n";
+
+        for (int i=0; i < aList.size();i++){
+            if (array[i].getUserRole() == 1){
+                writeString += CreateStringEmployee((Employee) array[i]);
+            }else if(array[i].getUserRole() == 2){
+                writeString += CreateStringEmployer((Employer) array[i]);
+            }else{
+                writeString += "0;3;Admin;Admin;" + "\n";
+            }
         }
-        writeToFile(writeString,"Employee");
+
+        writeToFile(writeString,"Users");
     }
 
-    public static List<User> getEployees() {
-        List<String> list = readFile("Employee");
+    public static List<User> getUsers() {
+        List<String> list = readFile("Users");
         List<User> aList = new LinkedList<>();
         String[] array = new String[list.size()];
         array = list.toArray(array);
@@ -78,50 +79,53 @@ public class FileManagger {
             int userRole = Integer.parseInt(parts[1]);
             String username = parts[2];
             String password = parts[3];
-            String name = parts[4];
-            int age = Integer.parseInt(parts[5]);
-            int pnum = Integer.parseInt(parts[6]);
 
-            aList.add(new Employee(id,userRole,username, password, name, age, pnum));
+            switch (userRole){
+                case 1:
+                    String name = parts[4];
+                    int age = Integer.parseInt(parts[5]);
+                    int pnum = Integer.parseInt(parts[6]);
+
+                    aList.add(new Employee(id,userRole,username, password, name, age, pnum));
+                    break;
+                case 2:
+                    String cName = parts[3];
+                    String email = parts[4];
+                    String location = parts[5];
+
+                    aList.add(new Employer(id,userRole,username, password, cName, email, location));
+                    break;
+                case 3:
+                    aList.add(new Admin(userRole, username, password));
+            }
         }
         return aList;
     }
 
-    public static void saveEmployers(List<Employer> aList) {
-        Employer[] array = new Employer[aList.size()];
-        array = aList.toArray(array);
+    private static String CreateStringEmployee(Employee e) {
+        String writeString = e.getID() + ";";
+        writeString += e.getUserRole() + ";";
+        writeString += e.getUsername() + ";";
+        writeString += e.getPassword() + ";";
+        writeString += e.getName() + ";";
+        writeString += e.getAge() + ";";
+        writeString += e.getPhoneNumber() + ";";
+        writeString += "\n";
 
-        String writeString = "";
-        for (int i = 0; i < aList.size(); i++) {
-            writeString += array[i].getUserRole() + ";";
-            writeString += array[i].getUsername() + ";";
-            writeString += array[i].getPassword() + ";";
-            writeString += array[i].getCompanyName() + ";";
-            writeString += array[i].getEmail() + ";";
-            writeString += array[i].getLocation() + ";";
-            writeString += "\n";
-        }
-        writeToFile(writeString,"Employer");
+        return writeString;
     }
 
-    public static List<Employer> getEployerss() {
-        List<String> list = readFile("Employers");
-        List<Employer> aList = new LinkedList<>();
-        String[] array = new String[list.size()];
-        array = list.toArray(array);
+    private static String CreateStringEmployer(Employer e) {
+        String writeString = e.getID() + ";";
+        writeString += e.getUserRole() + ";";
+        writeString += e.getUsername() + ";";
+        writeString += e.getPassword() + ";";
+        writeString += e.getCompanyName() + ";";
+        writeString += e.getEmail() + ";";
+        writeString += e.getLocation() + ";";
+        writeString += "\n";
 
-        for (int i = 0; i < list.size(); i++) {
-            String[] parts = array[i].split(";");
-            int userRole = Integer.parseInt(parts[0]);
-            String username = parts[1];
-            String password = parts[2];
-            String cName = parts[3];
-            String email = parts[4];
-            String location = parts[5];
-
-            aList.add(new Employer(userRole,username, password, cName, email, location));
-        }
-        return aList;
+        return writeString;
     }
 
     private static List<String> readFile(String filename) {
