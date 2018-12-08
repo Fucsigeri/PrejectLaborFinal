@@ -11,4 +11,13 @@ public class Employee extends User {
         Age = age;
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", Age=" + Age +
+                ", phoneNumber=" + phoneNumber +
+                '}'+super.toString();
+    }
 }

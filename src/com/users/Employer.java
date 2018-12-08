@@ -11,4 +11,13 @@ public class Employer extends User {
         this.email = email;
         this.location = location;
     }
+
+    @Override
+    public String toString() {
+        return "Employer{" +
+                "companyName='" + companyName + '\'' +
+                ", email='" + email + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
 }

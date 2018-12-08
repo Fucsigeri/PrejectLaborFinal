@@ -1,6 +1,6 @@
 package com.users;
 
-public class User implements Users {
+public class User{
 
     int userRole; // Munkavallalo-e vagy Munkaltato
     String username;
@@ -16,5 +16,14 @@ public class User implements Users {
 
     public void registration(String usrNm, String passwrd, int role){
 
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userRole=" + userRole +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

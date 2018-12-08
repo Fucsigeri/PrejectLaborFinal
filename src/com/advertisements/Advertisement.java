@@ -1,5 +1,7 @@
 package com.advertisements;
 
+import java.util.logging.Logger;
+
 public class Advertisement implements Advertisements{
     private int owner;
     private String title;
@@ -15,13 +17,13 @@ public class Advertisement implements Advertisements{
 
 
     @Override
-    public void addHighLight(int d){
-
+    public void addHighLight(){
+        this.title.toUpperCase();
     }
 
     @Override
-    public void removeHighLight(int id) {
-
+    public void removeHighLight() {
+        this.title.toLowerCase();
     }
 
     @Override
