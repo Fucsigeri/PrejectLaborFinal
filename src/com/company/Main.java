@@ -164,7 +164,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int choice;
         do{
-            printMenu();
             choice = input.nextInt();
             switch(choice){
                 case 1:
