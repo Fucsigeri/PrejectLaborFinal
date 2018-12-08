@@ -16,14 +16,6 @@ public class Main {
 
     public static void main(String[] args) {
         new Main().init();
-        //test
-        List<Advertisement> advertisements = new LinkedList<Advertisement>();
-        advertisements.add(new Advertisement(1,3,"title1","details1"));
-        advertisements.add(new Advertisement(2,2,"title2","details2"));
-        advertisements.add(new Advertisement(3,1,"title3","details3"));
-        FileManagger.saveAdvertisements(advertisements);
-        FileManagger.getAdvertisements();
-
     }
 
     private void init() {
