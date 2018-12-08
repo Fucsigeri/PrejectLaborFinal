@@ -18,6 +18,6 @@ public class Employer extends User {
                 "companyName='" + companyName + '\'' +
                 ", email='" + email + '\'' +
                 ", location='" + location + '\'' +
-                '}';
+                '}'+super.toString();
     }
 }
