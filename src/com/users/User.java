@@ -1,10 +1,26 @@
 package com.users;
 
+import com.advertisements.Advertisement;
+
 public class User{
 
     int userRole; // Munkavallalo-e vagy Munkaltato
     String username;
     String password;
+    Advertisement[] advs;
+
+    public Advertisement[] getAdvs() {
+        return advs;
+    }
+
+    public void setAdvs(Advertisement[] advs) {
+        this.advs = advs;
+    }
+
+
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
+    }
 
     public int getUserRole() {
         return userRole;

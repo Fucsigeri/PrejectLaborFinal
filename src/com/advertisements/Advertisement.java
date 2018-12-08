@@ -8,6 +8,15 @@ public class Advertisement implements Advertisements{
     private String details;
     private boolean highLighted;
 
+    @Override
+    public String toString() {
+        return "Advertisement{" +
+                "owner=" + owner +
+                ", title='" + title + '\'' +
+                ", details='" + details + '\'' +
+                ", highLighted=" + highLighted +
+                '}';
+    }
 
     public Advertisement(int owner, String title, String details){
         this.owner = owner;
