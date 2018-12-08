@@ -16,7 +16,7 @@ public class Advertisement implements Advertisements{
 
     @Override
     public void addHighLight(int d){
-        System.out.println();
+
     }
 
     @Override
