@@ -12,6 +12,18 @@ public class Employer extends User {
         this.location = location;
     }
 
+    public String getCompanyName(){
+        return companyName;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public String getLocation(){
+        return location;
+    }
+
     @Override
     public String toString() {
         return "Employer{" +

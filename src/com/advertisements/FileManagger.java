@@ -1,5 +1,8 @@
 package com.advertisements;
 
+import com.users.Employee;
+import com.users.Employer;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,17 +48,17 @@ public class FileManagger {
     }
 
     public static void saveEmployees(List<Employee> aList) {
-        Advertisement[] array = new Employee[aList.size()];
+        Employee[] array = new Employee[aList.size()];
         array = aList.toArray(array);
 
         String writeString = "";
         for (int i = 0; i < aList.size(); i++) {
-            writeString += array[i].getuserRole() + ";";
-            writeString += array[i].getusername() + ";";
-            writeString += array[i].getpassword() + ";";
-            writeString += array[i].getname() + ";";
-            writeString += array[i].getage() + ";";
-            writeString += array[i].getphoneNumber() + ";";
+            writeString += array[i].getUserRole() + ";";
+            writeString += array[i].getUsername() + ";";
+            writeString += array[i].getPassword() + ";";
+            writeString += array[i].getName() + ";";
+            writeString += array[i].getAge() + ";";
+            writeString += array[i].getPhoneNumber() + ";";
             writeString += "\n";
         }
         writeToFile(writeString,"Employee");
@@ -82,24 +85,24 @@ public class FileManagger {
     }
 
     public static void saveEmployers(List<Employer> aList) {
-        Advertisement[] array = new Employer[aList.size()];
+        Employer[] array = new Employer[aList.size()];
         array = aList.toArray(array);
 
         String writeString = "";
         for (int i = 0; i < aList.size(); i++) {
-            writeString += array[i].getuserRole() + ";";
-            writeString += array[i].getusername() + ";";
-            writeString += array[i].getpassword() + ";";
-            writeString += array[i].getcompanyName() + ";";
-            writeString += array[i].getemail() + ";";
-            writeString += array[i].getlocation() + ";";
+            writeString += array[i].getUserRole() + ";";
+            writeString += array[i].getUsername() + ";";
+            writeString += array[i].getPassword() + ";";
+            writeString += array[i].getCompanyName() + ";";
+            writeString += array[i].getEmail() + ";";
+            writeString += array[i].getLocation() + ";";
             writeString += "\n";
         }
         writeToFile(writeString,"Employer");
     }
 
     public static List<Employer> getEployerss() {
-        List<String> list = readFile("Employee");
+        List<String> list = readFile("Employers");
         List<Employer> aList = new LinkedList<>();
         String[] array = new String[list.size()];
         array = list.toArray(array);

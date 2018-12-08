@@ -12,6 +12,18 @@ public class Employee extends User {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public int getAge(){
+        return Age;
+    }
+
+    public int getPhoneNumber(){
+        return phoneNumber;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
