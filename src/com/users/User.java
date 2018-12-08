@@ -70,10 +70,4 @@ public class User{
         this.password = password;
         this.ID  = id;
     }
-
-    public void registration(String usrNm, String passwrd, int role){
-
-    }
-
-
 }

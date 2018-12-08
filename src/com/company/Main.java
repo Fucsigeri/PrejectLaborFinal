@@ -6,21 +6,19 @@ import com.users.Employee;
 import com.users.Employer;
 import com.users.User;
 
-import java.io.File;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     List<User> userList = FileManagger.getUsers();
-    List<Advertisement> adList = new LinkedList<>();
 
     public static void main(String[] args) {
         new Main().init();
     }
 
     private void init() {
+        Advertisement advertisement = new Advertisement();
         showMenu();
         FileManagger.saveUsers(userList);
     }
@@ -41,14 +39,9 @@ public class Main {
                         Employee ee = (Employee) createEmployee();
                         userList.add(ee);
                         ee.setID(userList.size());
-                        FileManagger.saveUsers(userList);
                         System.out.println(ee.getUserRole());
-
                         System.out.println("Added?");
-                        System.out.println(
-                                userList.get(0).toString()
-                        );
-                        System.out.println("mia  fasz vaaaan");
+                        System.out.println(userList.get(0).toString());
                         FileManagger.saveUsers(userList);
                         break;
                     case 2:
@@ -98,6 +91,7 @@ public class Main {
     private void printRegisterMenuForEmployee(){
         System.out.println("Create an Employee account:");
     }
+
     private Employee createEmployee(){
         Scanner input = new Scanner(System.in);
         String userName, password,name;
