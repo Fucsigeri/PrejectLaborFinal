@@ -7,19 +7,21 @@ import com.users.Employer;
 import com.users.User;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     List<User> userList = FileManagger.getEployees();
-    List<Advertisement> adList = new LinkedList<>();
 
     public static void main(String[] args) {
         new Main().init();
     }
 
     private void init() {
+        Advertisement advertisement = new Advertisement();
+        advertisement.newAd();
+        advertisement.modifyAd();
+        advertisement.listAds();
         showMenu();
     }
 
@@ -93,6 +95,7 @@ public class Main {
     private void printRegisterMenuForEmployee(){
         System.out.println("Create an Employee account:");
     }
+
     private Employee createEmployee(){
         Scanner input = new Scanner(System.in);
         String userName, password,name;

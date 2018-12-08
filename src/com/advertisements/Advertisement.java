@@ -1,55 +1,46 @@
 package com.advertisements;
 
+import com.company.Main;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
-public class Advertisement implements Advertisements {
+public class Advertisement {
     private int id;
-    private int owner;
     private String title;
     private String details;
-    private boolean highLighted;
-    private static int ID=0;
+
+    private List<Advertisement> adList = new LinkedList<>();
 
     @Override
     public String toString() {
         return "Advertisement{" +
-                "owner=" + owner +
+                "id=" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", details='" + details + '\'' +
-                ", highLighted=" + highLighted +
                 '}';
     }
 
+    public  Advertisement(){}
 
-    public Advertisement(int id, int owner, String title, String details) {
+    public Advertisement(int id, String title, String details) {
         this.id = id;
-        this.owner = owner;
         this.title = title;
         this.details = details;
     }
 
 
-    @Override
     public void addHighLight() {
-        this.title.toUpperCase();
-    }
-
-    @Override
-    public void removeHighLight() {
-        this.title.toLowerCase();
-    }
-
-    public int getOwner() {
-        return owner;
-    }
-
-    public void setOwner(int owner) {
-        this.owner = owner;
+        this.title = "[HIGHLIGHTED]  " + this.title.toUpperCase();
     }
 
     public int getId() {
         return id;
     }
+
 
     public String getTitle() {
         return title;
@@ -67,11 +58,63 @@ public class Advertisement implements Advertisements {
         this.details = details;
     }
 
-    public boolean isHighLighted() {
-        return highLighted;
+    public void listAds(){
+        for (int i=0; i< adList.size(); i++){
+            System.out.println(adList.get(i));
+        }
     }
 
-    public void setHighLighted(boolean highLighted) {
-        this.highLighted = highLighted;
+    public void newAd() {
+        Scanner input = new Scanner(System.in);
+        int currId = adList.size();
+        System.out.println("Title: ");
+        String currTitle = input.nextLine();
+        System.out.println("Details: ");
+        String currDetails = input.nextLine();
+        adList.add(adList.size(), new Advertisement(currId, currTitle, currDetails));
+        highlightQuestion(currId);
+    }
+
+    public void modifyAd(){
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("List of advertisements:");
+        listAds();
+
+        System.out.println("Which advertisement do you like to modify?");
+        int idx = input.nextInt();
+        System.out.println(adList.get(idx));
+        adList.remove(idx);
+
+        newAd();
+    }
+
+    public void deleteAd() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("List of advertisements:");
+        listAds();
+
+        System.out.println("Which advertisement do you like to delete?");
+        int idx = input.nextInt();
+        adList.remove(idx);
+    }
+
+    public void highlightQuestion(int idx){
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Do you like to highlight your advertisement? (yes/no)");
+        String decision = input.nextLine();
+        boolean likeTo = true;
+        while (likeTo) {
+            if ("yes".equals(decision)) {
+                adList.get(idx).addHighLight();
+                likeTo = false;
+            } else if ("no".equals(decision)) {
+                likeTo = false;
+            } else {
+                System.out.println("Something went wrong! Try again.");
+            }
+        }
     }
 }

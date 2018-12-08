@@ -22,7 +22,6 @@ public class FileManagger {
         String writeString = "";
         for (int i = 0; i < aList.size(); i++) {
             writeString += array[i].getId() + ";";
-            writeString += array[i].getOwner() + ";";
             writeString += array[i].getTitle() + ";";
             writeString += array[i].getDetails() + ";";
             writeString += "\n";
@@ -43,7 +42,7 @@ public class FileManagger {
             String title = parts[2];
             String details = parts[3];
 
-            aList.add(new Advertisement(id, owner, title, details));
+            aList.add(new Advertisement(id, title, details));
         }
         return aList;
     }
