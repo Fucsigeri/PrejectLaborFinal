@@ -5,6 +5,13 @@ public class Employee extends User {
     int  Age;
     int phoneNumber;
 
+    public Employee(int id, int userRole, String username, String password, String name, int age, int phoneNumber) {
+        super(id,userRole, username, password);
+        this.name = name;
+        Age = age;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Employee(int userRole, String username, String password, String name, int age, int phoneNumber) {
         super(userRole, username, password);
         this.name = name;

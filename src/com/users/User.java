@@ -22,11 +22,12 @@ public class User{
     @Override
     public String toString() {
         return "User{" +
+                "ID= " + ID + " " +
                 "userRole=" + userRole +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", advs=" + Arrays.toString(advs) +
-                '}';
+                '}' + "\n";
     }
 
 
@@ -61,6 +62,13 @@ public class User{
         this.userRole = userRole;
         this.username = username;
         this.password = password;
+    }
+
+    public User(int id,int userRole, String username, String password) {
+        this.userRole = userRole;
+        this.username = username;
+        this.password = password;
+        this.ID  = id;
     }
 
     public void registration(String usrNm, String passwrd, int role){

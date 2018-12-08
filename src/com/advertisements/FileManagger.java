@@ -2,6 +2,7 @@ package com.advertisements;
 
 import com.users.Employee;
 import com.users.Employer;
+import com.users.User;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -47,12 +48,13 @@ public class FileManagger {
         return aList;
     }
 
-    public static void saveEmployees(List<Employee> aList) {
+    public static void saveEmployees(List<User> aList) {
         Employee[] array = new Employee[aList.size()];
         array = aList.toArray(array);
 
         String writeString = "";
         for (int i = 0; i < aList.size(); i++) {
+            writeString += array[i].getID() + ";";
             writeString += array[i].getUserRole() + ";";
             writeString += array[i].getUsername() + ";";
             writeString += array[i].getPassword() + ";";
@@ -64,22 +66,23 @@ public class FileManagger {
         writeToFile(writeString,"Employee");
     }
 
-    public static List<Employee> getEployees() {
+    public static List<User> getEployees() {
         List<String> list = readFile("Employee");
-        List<Employee> aList = new LinkedList<>();
+        List<User> aList = new LinkedList<>();
         String[] array = new String[list.size()];
         array = list.toArray(array);
 
         for (int i = 0; i < list.size(); i++) {
             String[] parts = array[i].split(";");
-            int userRole = Integer.parseInt(parts[0]);
-            String username = parts[1];
-            String password = parts[2];
-            String name = parts[3];
-            int age = Integer.parseInt(parts[4]);
-            int pnum = Integer.parseInt(parts[5]);
+            int id = Integer.parseInt(parts[0]);
+            int userRole = Integer.parseInt(parts[1]);
+            String username = parts[2];
+            String password = parts[3];
+            String name = parts[4];
+            int age = Integer.parseInt(parts[5]);
+            int pnum = Integer.parseInt(parts[6]);
 
-            aList.add(new Employee(userRole,username, password, name, age, pnum));
+            aList.add(new Employee(id,userRole,username, password, name, age, pnum));
         }
         return aList;
     }

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    List<User> userList = new LinkedList<>();
+    List<User> userList = FileManagger.getEployees();
     List<Advertisement> adList = new LinkedList<>();
 
     public static void main(String[] args) {
@@ -39,7 +39,9 @@ public class Main {
                         System.out.println("asd");
                         userList.add(ee);
                         ee.setID(userList.size());
+                        FileManagger.saveEmployees(userList);
                         System.out.println(ee.getID());
+                        System.out.println(userList);
                         System.out.println("Added?");
                         System.out.println(
                                 userList.get(0).toString()
@@ -110,19 +112,20 @@ public class Main {
         String i_userName,i_password;
         System.out.println("Please enter your Username");
         i_userName =  input.nextLine();
-        System.out.println(userList.get(0).getUsername());
         Iterator it = userList.iterator();
+        int i = 0;
         while(it.hasNext()){
-            if(userList.get(0).getUsername().equalsIgnoreCase(i_userName)){
+            if(userList.get(i).getUsername().equalsIgnoreCase(i_userName)){
                 System.out.println("Please enter your password");
                 i_password = input.nextLine();
-                if(userList.get(0).getPassword().equals(i_password)){
+                if(userList.get(i).getPassword().equals(i_password)){
                     startSessionForEmployee();
-                    return succesfull_login;                                       // kilepesi ertek a fomenubol
+                    return succesfull_login;                        // kilepesi ertek a fomenubol
                 } else {
                     return unsuccesfull_login;
                 }
             }
+            i++;
         }
         System.out.println("Nem lep be ide");
         return unsuccesfull_login;
