@@ -12,13 +12,13 @@ import java.util.Scanner;
 
 public class Main {
     List<User> userList = FileManagger.getUsers();
+    Advertisement advertisement = new Advertisement();
 
     public static void main(String[] args) {
         new Main().init();
     }
 
     private void init() {
-        Advertisement advertisement = new Advertisement();
         showMenu();
         FileManagger.saveUsers(userList);
     }
@@ -118,7 +118,7 @@ public class Main {
                 System.out.println("Please enter your password");
                 i_password = input.nextLine();
                 if(userList.get(i).getPassword().equals(i_password)){
-                    startSessionForEmployee();
+                    menuAfterLogin();
                     return succesfull_login;                        // kilepesi ertek a fomenubol
                 } else {
                     return unsuccesfull_login;
@@ -146,7 +146,7 @@ public class Main {
                 System.out.println("Please enter your password");
                 i_password = input.nextLine();
                 if(userList.get(0).getPassword().equals(i_password)){
-                    startSessionForEmployee();
+                    menuAfterLogin();
                     return succesfull_login;                                       // kilepesi ertek a fomenubol
                 } else {
                     return unsuccesfull_login;
@@ -157,8 +157,8 @@ public class Main {
         return unsuccesfull_login;
     } // same
 
-    private void startSessionForEmployee(){
-        System.out.println("you started a session as employee");
+    private void menuAfterLogin(){
+        System.out.println("///////////////////////////////////////////////////////");
         Scanner input = new Scanner(System.in);
         int choice;
         do{
@@ -166,14 +166,24 @@ public class Main {
             choice = input.nextInt();
             switch(choice){
                 case 1:
-                    //addNewAdvertisment();
+                    System.out.println("New advertisement");
+                    advertisement.newAd();
                     break;
                 case 2:
-                    //listAdvertisment();
+                    System.out.println("Modify advertisement");
+                    advertisement.modifyAd();
                     break;
                 case 3:
+                    System.out.println("Delete advertisement");
+                    advertisement.deleteAd();
                     break;
                 case 4:
+                    System.out.println("List advertisements");
+                    advertisement.listAds();
+                    break;
+                case 5:
+                    System.out.println("Log out");
+                    init();
                     break;
                 default:
                     System.out.println("Wrong menu item");
