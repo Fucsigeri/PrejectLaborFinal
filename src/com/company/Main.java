@@ -37,6 +37,8 @@ public class Main {
                         Employee ee = (Employee) createEmployee();
                         System.out.println("asd");
                         userList.add(ee);
+                        ee.setID(userList.size());
+                        System.out.println(ee.getID());
                         System.out.println("Added?");
                         System.out.println(
                                 userList.get(0).toString()
@@ -46,6 +48,8 @@ public class Main {
                         printRegisterMenuForEmployer();
                         Employer er = (Employer) createEmployer();
                         userList.add(er);
+                        er.setID(userList.size());
+                        System.out.println(er.getID());
                         System.out.println(userList.get(0).toString()
                         );
                         break;
