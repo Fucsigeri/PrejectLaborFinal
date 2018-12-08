@@ -159,9 +159,10 @@ public class Main {
             choice = input.nextInt();
             switch(choice){
                 case 1:
+                    //addNewAdvertisment();
                     break;
                 case 2:
-
+                    //listAdvertisment();
                     break;
                 case 3:
                     break;

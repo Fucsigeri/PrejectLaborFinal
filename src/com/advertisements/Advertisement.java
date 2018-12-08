@@ -7,6 +7,7 @@ public class Advertisement implements Advertisements{
     private String title;
     private String details;
     private boolean highLighted;
+    private static int ID=0;
 
     @Override
     public String toString() {
@@ -18,10 +19,19 @@ public class Advertisement implements Advertisements{
                 '}';
     }
 
+    public static int getID() {
+        return ID;
+    }
+
+    public static void setID(int ID) {
+        Advertisement.ID = ID;
+    }
+
     public Advertisement(int owner, String title, String details){
         this.owner = owner;
         this.title = title;
         this.details = details;
+        ID++;
     }
 
 
