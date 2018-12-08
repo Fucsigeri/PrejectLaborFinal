@@ -6,6 +6,7 @@ import com.users.Employee;
 import com.users.Employer;
 import com.users.User;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -51,9 +52,9 @@ public class Main {
                         break;
                     case 3:
                         choice = validationLoginEmployee();
-
                         break;
                     case 4:
+                        choice = validationLoginEmployer();
                         System.out.println("Bye");
                         break;
                     default:
@@ -105,12 +106,13 @@ public class Main {
         String i_userName,i_password;
         System.out.println("Please enter your Username");
         i_userName =  input.nextLine();
-        Object[] userArray= userList.toArray();
-        for(int i = 0; userArray.length > i; i++){
-            if(userList.get(i).getUsername() == i_userName){
+        System.out.println(userList.get(0).getUsername());
+        Iterator it = userList.iterator();
+        while(it.hasNext()){
+            if(userList.get(0).getUsername().equalsIgnoreCase(i_userName)){
                 System.out.println("Please enter your password");
                 i_password = input.nextLine();
-                if(userList.get(i).getPassword() == i_password){
+                if(userList.get(0).getPassword().equals(i_password)){
                     startSessionForEmployee();
                     return succesfull_login;                                       // kilepesi ertek a fomenubol
                 } else {
@@ -121,15 +123,68 @@ public class Main {
         System.out.println("Nem lep be ide");
         return unsuccesfull_login;
     } // ha sikeresen bejelentkezett indul egy uj session ahol csak szemelyre szabottan o lajta a dolgokat
-    private void validationLoginEmployer(){} // same
-    private void printEmployeeMenu(){}
-    private void printEmployerMenu(){}
 
+
+
+    private int validationLoginEmployer(){
+        int succesfull_login = 5;
+        int unsuccesfull_login = 2;
+        Scanner input = new Scanner(System.in);
+        String i_userName,i_password;
+        System.out.println("Please enter your Username");
+        i_userName =  input.nextLine();
+        System.out.println(userList.get(0).getUsername());
+        Iterator it = userList.iterator();
+        while(it.hasNext()){
+            if(userList.get(0).getUsername().equalsIgnoreCase(i_userName)){
+                System.out.println("Please enter your password");
+                i_password = input.nextLine();
+                if(userList.get(0).getPassword().equals(i_password)){
+                    startSessionForEmployee();
+                    return succesfull_login;                                       // kilepesi ertek a fomenubol
+                } else {
+                    return unsuccesfull_login;
+                }
+            }
+        }
+        System.out.println("Nem lep be ide");
+        return unsuccesfull_login;
+    } // same
 
     private void startSessionForEmployee(){
         System.out.println("you started a session as employee");
+        Scanner input = new Scanner(System.in);
+        int choice;
+        do{
+            printMenu();
+            choice = input.nextInt();
+            switch(choice){
+                case 1:
+                    //addNewAdvertisment();
+                    break;
+                case 2:
+                    //listAdvertisment();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Wrong menu item");
+                    break;
+            }
+        }while(choice!=5);
+
     }
 
+    private void startSessionForEmployer(){
+        System.out.println("you started a session as employer");
+
+    }
+    private void startSessionForAdmin(){
+        System.out.println("you started a session as admin");
+
+    }
 
     private void deleteUser() {
         Scanner input = new Scanner(System.in);

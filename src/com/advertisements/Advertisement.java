@@ -8,13 +8,32 @@ public class Advertisement implements Advertisements {
     private String title;
     private String details;
     private boolean highLighted;
+    private static int ID=0;
 
+    @Override
+    public String toString() {
+        return "Advertisement{" +
+                "owner=" + owner +
+                ", title='" + title + '\'' +
+                ", details='" + details + '\'' +
+                ", highLighted=" + highLighted +
+                '}';
+    }
+
+    public static int getID() {
+        return ID;
+    }
+
+    public static void setID(int ID) {
+        Advertisement.ID = ID;
+    }
 
     public Advertisement(int id, int owner, String title, String details) {
         this.id = id;
         this.owner = owner;
         this.title = title;
         this.details = details;
+        ID++;
     }
 
 
