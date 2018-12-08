@@ -9,7 +9,15 @@ public class User{
     int userRole; // Munkavallalo-e vagy Munkaltato
     String username;
     String password;
-    static int ID=0;
+    int ID;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     @Override
     public String toString() {
@@ -21,13 +29,6 @@ public class User{
                 '}';
     }
 
-    public static int getID() {
-        return ID;
-    }
-
-    public static void setID(int ID) {
-        User.ID = ID;
-    }
 
     Advertisement[] advs;
 
@@ -60,7 +61,6 @@ public class User{
         this.userRole = userRole;
         this.username = username;
         this.password = password;
-        ID++;
     }
 
     public void registration(String usrNm, String passwrd, int role){
