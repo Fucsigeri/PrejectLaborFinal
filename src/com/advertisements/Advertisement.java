@@ -28,7 +28,6 @@ public class Advertisement implements Advertisements {
         this.details = details;
     }
 
-
     @Override
     public void addHighLight() {
         this.title.toUpperCase();
