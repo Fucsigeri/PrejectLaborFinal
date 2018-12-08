@@ -35,32 +35,14 @@ public class Main {
                 switch(choice){
                     case 1:
                         printRegisterMenuForEmployee();
-                        Employee ee = (Employee) createEmployee();
-                        System.out.println("asd");
-                        userList.add(ee);
-                        ee.setID(userList.size());
-                        FileManagger.saveEmployees(userList);
-                        System.out.println(ee.getID());
-                        System.out.println(userList);
-                        System.out.println("Added?");
-                        System.out.println(
-                                userList.get(0).toString()
-                        );
                         break;
                     case 2:
                         printRegisterMenuForEmployer();
-                        Employer er = (Employer) createEmployer();
-                        userList.add(er);
-                        er.setID(userList.size());
-                        System.out.println(er.getID());
-                        System.out.println(userList.get(0).toString()
-                        );
                         break;
                     case 3:
-                        choice = validationLoginEmployee();
+                        choice = userLoginValidation();
                         break;
                     case 4:
-                        choice = validationLoginEmployer();
                         System.out.println("Bye");
                         break;
                     default:
@@ -76,6 +58,9 @@ public class Main {
 
     private void printRegisterMenuForEmployer(){
         System.out.println("Create an Employer account:");
+        Employer er = (Employer) createEmployer();
+        userList.add(er);
+        er.setID(userList.size());
     }
     private User createEmployer(){
         Scanner input = new Scanner(System.in);
@@ -92,6 +77,10 @@ public class Main {
 
     private void printRegisterMenuForEmployee(){
         System.out.println("Create an Employee account:");
+        Employee ee = (Employee) createEmployee();
+        userList.add(ee);
+        ee.setID(userList.size());
+        FileManagger.saveEmployees(userList);
     }
     private Employee createEmployee(){
         Scanner input = new Scanner(System.in);
@@ -105,7 +94,7 @@ public class Main {
         return new Employee(2,userName,password,name,age,phoneNumber);
     }
 
-    private int validationLoginEmployee(){
+    private int userLoginValidation(){
         int succesfull_login = 5;
         int unsuccesfull_login = 2;
         Scanner input = new Scanner(System.in);
@@ -119,7 +108,13 @@ public class Main {
                 System.out.println("Please enter your password");
                 i_password = input.nextLine();
                 if(userList.get(i).getPassword().equals(i_password)){
-                    startSessionForEmployee();
+                    if(userList.get(i).getUserRole() == 1) {
+                        startSessionForEmployee();
+                    } else if(userList.get(i).getUserRole() == 2){
+                        startSessionForEmployer();
+                    } else if(userList.get(i).getUserRole() == 3){
+                        startSessionForAdmin();
+                    }
                     return succesfull_login;                        // kilepesi ertek a fomenubol
                 } else {
                     return unsuccesfull_login;
@@ -131,32 +126,6 @@ public class Main {
         return unsuccesfull_login;
     } // ha sikeresen bejelentkezett indul egy uj session ahol csak szemelyre szabottan o lajta a dolgokat
 
-
-
-    private int validationLoginEmployer(){
-        int succesfull_login = 5;
-        int unsuccesfull_login = 2;
-        Scanner input = new Scanner(System.in);
-        String i_userName,i_password;
-        System.out.println("Please enter your Username");
-        i_userName =  input.nextLine();
-        System.out.println(userList.get(0).getUsername());
-        Iterator it = userList.iterator();
-        while(it.hasNext()){
-            if(userList.get(0).getUsername().equalsIgnoreCase(i_userName)){
-                System.out.println("Please enter your password");
-                i_password = input.nextLine();
-                if(userList.get(0).getPassword().equals(i_password)){
-                    startSessionForEmployee();
-                    return succesfull_login;                                       // kilepesi ertek a fomenubol
-                } else {
-                    return unsuccesfull_login;
-                }
-            }
-        }
-        System.out.println("Nem lep be ide");
-        return unsuccesfull_login;
-    } // same
 
     private void startSessionForEmployee(){
         System.out.println("you started a session as employee");
@@ -208,8 +177,7 @@ public class Main {
     private void printMenu() {
         System.out.println("1. Register as Employee");
         System.out.println("2. Register as Employer");
-        System.out.println("3. Sign in as Employee");
-        System.out.println("4. Sign in as Employer");
+        System.out.println("3. Sign in");
         System.out.println("5. Exit");
     }
 }

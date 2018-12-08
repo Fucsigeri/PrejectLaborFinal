@@ -1,8 +1,11 @@
 package com.users;
 
 import com.advertisements.Advertisement;
+import com.advertisements.FileManagger;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Scanner;
 
 public class User{
 
@@ -75,5 +78,36 @@ public class User{
 
     }
 
+
+    public User(){
+
+    }
+
+
+//
+//    public User createEmployer(){
+//        Scanner input = new Scanner(System.in);
+//        String userName,password,companyName,email,location;
+//        int userRole;
+//        userName = input.nextLine();
+//        password = input.nextLine();
+//        companyName = input.nextLine();
+//        email = input.nextLine();
+//        location = input.nextLine();
+//        return new Employer(1,userName,password,companyName,email,location);
+//    }
+//
+//
+//    public Employee createEmployee(){
+//        Scanner input = new Scanner(System.in);
+//        String userName, password,name;
+//        int age,phoneNumber;
+//        userName = input.nextLine();
+//        password = input.nextLine();
+//        name = input.nextLine();
+//        age = Integer.parseInt(input.nextLine());
+//        phoneNumber = Integer.parseInt(input.nextLine());
+//        return new Employee(2,userName,password,name,age,phoneNumber);
+//    }
 
 }
