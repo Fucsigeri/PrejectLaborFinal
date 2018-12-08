@@ -13,7 +13,7 @@ public class Advertisement {
     private String title;
     private String details;
 
-    private List<Advertisement> adList = new LinkedList<>();
+    public List<Advertisement> adList = new LinkedList<>();
 
     @Override
     public String toString() {
@@ -71,7 +71,7 @@ public class Advertisement {
         String currTitle = input.nextLine();
         System.out.println("Details: ");
         String currDetails = input.nextLine();
-        adList.add(adList.size(), new Advertisement(currId, currTitle, currDetails));
+        adList.add(currId, new Advertisement(currId, currTitle, currDetails));
         highlightQuestion(currId);
     }
 

@@ -13,13 +13,14 @@ import java.util.Scanner;
 public class Main {
     List<User> userList = FileManagger.getEployees();
     Advertisement advertisement = new Advertisement();
+    Employer employer = new Employer();
+    Employee employee = new Employee();
 
     public static void main(String[] args) {
         new Main().init();
     }
 
     private void init() {
-
         showMenu();
     }
 
