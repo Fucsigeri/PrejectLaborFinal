@@ -1,8 +1,11 @@
 package com.users;
 
 import com.advertisements.Advertisement;
+import com.advertisements.FileManagger;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Scanner;
 
 public class User{
 

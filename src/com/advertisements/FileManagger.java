@@ -39,9 +39,8 @@ public class FileManagger {
         for (int i = 0; i < list.size(); i++) {
             String[] parts = array[i].split(";");
             int id = Integer.parseInt(parts[0]);
-            int owner = Integer.parseInt(parts[1]);
-            String title = parts[2];
-            String details = parts[3];
+            String title = parts[1];
+            String details = parts[2];
 
             aList.add(new Advertisement(id, title, details));
         }

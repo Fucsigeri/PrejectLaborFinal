@@ -13,7 +13,7 @@ public class Advertisement {
     private String title;
     private String details;
 
-    private List<Advertisement> adList = FileManagger.getAdvertisements();
+    public List<Advertisement> adList = new LinkedList<>();
 
     @Override
     public String toString() {
@@ -73,6 +73,7 @@ public class Advertisement {
         String currDetails = input.nextLine();
         adList.add(adList.size(), new Advertisement(currId, currTitle, currDetails));
         highlightQuestion(currId);
+        FileManagger.saveAdvertisements(adList);
     }
 
     public void modifyAd(){

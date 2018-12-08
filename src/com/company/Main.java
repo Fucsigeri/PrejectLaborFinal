@@ -19,6 +19,7 @@ public class Main {
     }
 
     private void init() {
+        advertisement.adList = FileManagger.getAdvertisements();
         showMenu();
         FileManagger.saveUsers(userList);
     }
@@ -34,31 +35,15 @@ public class Main {
                 choice = input.nextInt();
                 switch(choice){
                     case 1:
-                        System.out.println(userList);
                         printRegisterMenuForEmployee();
-                        Employee ee = (Employee) createEmployee();
-                        userList.add(ee);
-                        ee.setID(userList.size());
-                        System.out.println(ee.getUserRole());
-                        System.out.println("Added?");
-                        System.out.println(userList.get(0).toString());
-                        FileManagger.saveUsers(userList);
                         break;
                     case 2:
                         printRegisterMenuForEmployer();
-                        Employer er = (Employer) createEmployer();
-                        userList.add(er);
-                        er.setID(userList.size());
-                        FileManagger.saveUsers(userList);
-                        System.out.println(er.getID());
-                        System.out.println(userList.get(0).toString()
-                        );
                         break;
                     case 3:
-                        choice = validationLoginEmployee();
+                        choice = userLoginValidation();
                         break;
                     case 4:
-                        choice = validationLoginEmployer();
                         System.out.println("Bye");
                         break;
                     default:
@@ -74,6 +59,9 @@ public class Main {
 
     private void printRegisterMenuForEmployer(){
         System.out.println("Create an Employer account:");
+        Employer er = (Employer) createEmployer();
+        userList.add(er);
+        er.setID(userList.size());
     }
     private User createEmployer(){
         Scanner input = new Scanner(System.in);
@@ -90,6 +78,10 @@ public class Main {
 
     private void printRegisterMenuForEmployee(){
         System.out.println("Create an Employee account:");
+        Employee ee = (Employee) createEmployee();
+        userList.add(ee);
+        ee.setID(userList.size());
+        FileManagger.saveUsers(userList);
     }
 
     private Employee createEmployee(){
@@ -104,7 +96,7 @@ public class Main {
         return new Employee(1,userName,password,name,age,phoneNumber);
     }
 
-    private int validationLoginEmployee(){
+    private int userLoginValidation(){
         int succesfull_login = 5;
         int unsuccesfull_login = 2;
         Scanner input = new Scanner(System.in);
@@ -118,7 +110,13 @@ public class Main {
                 System.out.println("Please enter your password");
                 i_password = input.nextLine();
                 if(userList.get(i).getPassword().equals(i_password)){
-                    menuAfterLogin();
+                    if(userList.get(i).getUserRole() == 1) {
+                        startSession();
+                    } else if(userList.get(i).getUserRole() == 2){
+                        startSession();
+                    } else if(userList.get(i).getUserRole() == 3){
+                        startSessionForAdmin();
+                    }
                     return succesfull_login;                        // kilepesi ertek a fomenubol
                 } else {
                     return unsuccesfull_login;
@@ -131,58 +129,31 @@ public class Main {
     } // ha sikeresen bejelentkezett indul egy uj session ahol csak szemelyre szabottan o lajta a dolgokat
 
 
-
-    private int validationLoginEmployer(){
-        int succesfull_login = 5;
-        int unsuccesfull_login = 2;
-        Scanner input = new Scanner(System.in);
-        String i_userName,i_password;
-        System.out.println("Please enter your Username");
-        i_userName =  input.nextLine();
-        System.out.println(userList.get(0).getUsername());
-        Iterator it = userList.iterator();
-        while(it.hasNext()){
-            if(userList.get(0).getUsername().equalsIgnoreCase(i_userName)){
-                System.out.println("Please enter your password");
-                i_password = input.nextLine();
-                if(userList.get(0).getPassword().equals(i_password)){
-                    menuAfterLogin();
-                    return succesfull_login;                                       // kilepesi ertek a fomenubol
-                } else {
-                    return unsuccesfull_login;
-                }
-            }
-        }
-        System.out.println("Nem lep be ide");
-        return unsuccesfull_login;
-    } // same
-
-    private void menuAfterLogin(){
-        System.out.println("///////////////////////////////////////////////////////");
+    private void startSession(){
+        System.out.println("you started a session as employee");
         Scanner input = new Scanner(System.in);
         int choice;
         do{
-            printMenu();
+            System.out.println("1. New advertisement");
+            System.out.println("2. Modify advertisement");
+            System.out.println("3. Delete advertisement");
+            System.out.println("4. List advertisements");
+            System.out.println("5. Log out");
             choice = input.nextInt();
             switch(choice){
                 case 1:
-                    System.out.println("New advertisement");
                     advertisement.newAd();
                     break;
                 case 2:
-                    System.out.println("Modify advertisement");
                     advertisement.modifyAd();
                     break;
                 case 3:
-                    System.out.println("Delete advertisement");
                     advertisement.deleteAd();
                     break;
                 case 4:
-                    System.out.println("List advertisements");
                     advertisement.listAds();
                     break;
                 case 5:
-                    System.out.println("Log out");
                     init();
                     break;
                 default:
@@ -217,8 +188,7 @@ public class Main {
     private void printMenu() {
         System.out.println("1. Register as Employee");
         System.out.println("2. Register as Employer");
-        System.out.println("3. Sign in as Employee");
-        System.out.println("4. Sign in as Employer");
+        System.out.println("3. Sign in");
         System.out.println("5. Exit");
     }
 }
