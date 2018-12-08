@@ -4,7 +4,8 @@ public class Advertisement implements Advertisements{
     private int owner;
     private String title;
     private String details;
-    private boolean hightLighted;
+    private boolean highLighted;
+
 
     public Advertisement(int owner, String title, String details){
         this.owner = owner;
@@ -12,12 +13,14 @@ public class Advertisement implements Advertisements{
         this.details = details;
     }
 
-    @Override
-    public void addHightLight(int id) {
 
+    @Override
+    public void addHighLight(int d){
+        System.out.println();
     }
 
-    public void removeHightLight(int id) {
+    @Override
+    public void removeHighLight(int id) {
 
     }
 
@@ -41,24 +44,37 @@ public class Advertisement implements Advertisements{
 
     }
 
-    public void setTitle(String title){
-
+    public int getOwner() {
+        return owner;
     }
 
-    public String getTitle(){
-
+    public void setOwner(int owner) {
+        this.owner = owner;
     }
 
-    public void setDetails(String title){
-
+    public String getTitle() {
+        return title;
     }
 
-    public String getDetails(){
-
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getIdByName(){
-
+    public String getDetails() {
+        return details;
     }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public boolean isHighLighted() {
+        return highLighted;
+    }
+
+    public void setHighLighted(boolean highLighted) {
+        this.highLighted = highLighted;
+    }
+
 
 }

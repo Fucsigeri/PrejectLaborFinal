@@ -2,11 +2,10 @@ package com.advertisements;
 import  com.advertisements.Advertisement;
 
 public interface Advertisements {
-
-    public void addHightLight(int id);
-    public void removeHightLight(int id);
-    public void delete(Advertisement a);
-    public void list();
-    public void add(Advertisement a);
-    public void modify(Advertisement a);
+    void addHighLight(int d);            // en
+    void removeHighLight(int id);        // en
+    void delete(Advertisement a);
+    void list();                         // en
+    void add(Advertisement a);
+    void modify(Advertisement a);
 }
