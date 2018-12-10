@@ -184,7 +184,7 @@ public class Main {
                         admin.deleteUser(userList);
                         break;
                     case 6:
-                        init();
+                        System.out.println("Loggin out...");
                         break;
                     default:
                         System.out.println("Wrong menu item");
