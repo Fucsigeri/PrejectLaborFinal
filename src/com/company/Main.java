@@ -2,6 +2,7 @@ package com.company;
 
 import com.advertisements.Advertisement;
 import com.advertisements.FileManagger;
+import com.users.Admin;
 import com.users.Employee;
 import com.users.Employer;
 import com.users.User;
@@ -15,6 +16,7 @@ public class Main {
     Advertisement advertisement = new Advertisement();
     Employer employer = new Employer();
     Employee employee = new Employee();
+    Admin admin = new Admin();
 
     public static void main(String[] args) {
         new Main().init();
@@ -55,7 +57,7 @@ public class Main {
                         System.out.println("Wrong menu item");
                         break;
                 }
-            }while(choice!=5);
+            }while(choice!=4);
         }catch(Exception ex){
             System.out.println("Something went wrong! Please try again.");
             init();
@@ -98,7 +100,7 @@ public class Main {
                     } else if(userList.get(i).getUserRole() == 2){
                         startSession(i_userName,userList.get(i).getUserRole());
                     } else if(userList.get(i).getUserRole() == 3){
-                        startSessionForAdmin();
+                        startSession(i_userName,userList.get(i).getUserRole());
                     }
                     return succesfull_login;                        // kilepesi ertek a fomenubol
                 } else {
@@ -130,65 +132,89 @@ public class Main {
         System.out.println(usrnm + " started a session as" + roleString);
         Scanner input = new Scanner(System.in);
         int choice;
-        do{
-            System.out.println("1. New advertisement");
-            System.out.println("2. Modify advertisement");
-            System.out.println("3. Delete advertisement");
-            System.out.println("4. List advertisements");
-            System.out.println("5. Log out");
-            choice = input.nextInt();
-            switch(choice){
-                case 1:
-                    advertisement.newAd();
-                    FileManagger.saveAdvertisements(advertisement.adList);
-                    break;
-                case 2:
-                    advertisement.modifyAd();
-                    FileManagger.saveAdvertisements(advertisement.adList);
-                    break;
-                case 3:
-                    advertisement.deleteAd();
-                    FileManagger.saveAdvertisements(advertisement.adList);
-                    break;
-                case 4:
-                    advertisement.listAds();
-                    break;
-                case 5:
-                    init();
-                    break;
-                default:
-                    System.out.println("Wrong menu item");
-                    break;
-            }
-        }while(choice!=5);
-
+        if (roleid < 3) {
+            do {
+                System.out.println("1. New advertisement");
+                System.out.println("2. Modify advertisement");
+                System.out.println("3. Delete advertisement");
+                System.out.println("4. List advertisements");
+                System.out.println("5. Log out");
+                choice = input.nextInt();
+                switch (choice) {
+                    case 1:
+                        advertisement.newAd();
+                        FileManagger.saveAdvertisements(advertisement.adList);
+                        break;
+                    case 2:
+                        advertisement.modifyAd();
+                        FileManagger.saveAdvertisements(advertisement.adList);
+                        break;
+                    case 3:
+                        advertisement.deleteAd();
+                        FileManagger.saveAdvertisements(advertisement.adList);
+                        break;
+                    case 4:
+                        advertisement.listAds();
+                        break;
+                    case 5:
+                        init();
+                        break;
+                    default:
+                        System.out.println("Wrong menu item");
+                        break;
+                }
+            } while (choice != 5);
+        } else {
+            do {
+                System.out.println("1. New advertisement");
+                System.out.println("2. Modify advertisement");
+                System.out.println("3. Delete advertisement");
+                System.out.println("4. List advertisements");
+                System.out.println("5. Delete user");
+                System.out.println("6. Log out");
+                choice = input.nextInt();
+                switch (choice) {
+                    case 1:
+                        advertisement.newAd();
+                        FileManagger.saveAdvertisements(advertisement.adList);
+                        break;
+                    case 2:
+                        advertisement.modifyAd();
+                        FileManagger.saveAdvertisements(advertisement.adList);
+                        break;
+                    case 3:
+                        advertisement.deleteAd();
+                        FileManagger.saveAdvertisements(advertisement.adList);
+                        break;
+                    case 4:
+                        advertisement.listAds();
+                        FileManagger.saveAdvertisements(advertisement.adList);
+                        break;
+                    case 5:
+                        admin.deleteUser(userList);
+                        FileManagger.saveAdvertisements(advertisement.adList);
+                        break;
+                    case 6:
+                        init();
+                        break;
+                    default:
+                        System.out.println("Wrong menu item");
+                        break;
+                }
+            } while (choice != 6);
+        }
     }
 
-    private void startSessionForEmployer(){
-        System.out.println("you started a session as employer");
 
-    }
     private void startSessionForAdmin(){
         System.out.println("you started a session as admin");
 
-    }
-
-    private void deleteUser() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter the number you want to delete");
-        Object[] userArray= userList.toArray();
-        int index = input.nextInt();
-        if(index>userArray.length || index<userArray.length){
-            System.out.println("There is no index like that!");
-        } else {
-            userList.remove(index-1);
-        }
     }
 
     private void printMenu() {
         System.out.println("1. Register as Employee");
         System.out.println("2. Register as Employer");
         System.out.println("3. Sign in");
-        System.out.println("5. Exit");
+        System.out.println("4. Exit");
     }
 }

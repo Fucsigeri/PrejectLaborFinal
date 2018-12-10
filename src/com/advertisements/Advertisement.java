@@ -15,14 +15,6 @@ public class Advertisement {
 
     public List<Advertisement> adList = new LinkedList<>();
 
-    @Override
-    public String toString() {
-        return "Advertisement{" +
-                "id=" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", details='" + details + '\'' +
-                '}';
-    }
 
     public  Advertisement(){}
 
@@ -117,5 +109,10 @@ public class Advertisement {
                 System.out.println("Something went wrong! Try again.");
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return id + "ID " + title + "\n" + details +"\n\n";
     }
 }

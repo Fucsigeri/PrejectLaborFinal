@@ -40,11 +40,7 @@ public class Employee extends User {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", phoneNumber=" + phoneNumber +
-                '}'+super.toString();
+        return super.toString() + "Name: " + name + " Age: " + age + " Phone number: " + phoneNumber + "\n";
     }
 
     public Employee registration() {
