@@ -132,10 +132,10 @@ public class Advertisement {
     public void highlightQuestion(int idx){
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Do you like to highlight your advertisement? (yes/no)");
-        String decision = input.nextLine();
         boolean likeTo = true;
         while (likeTo) {
+            System.out.println("Do you like to highlight your advertisement? (yes/no)");
+            String decision = input.nextLine();
             if ("yes".equals(decision)) {
                 adList.get(idx).addHighLight();
                 likeTo = false;
@@ -143,6 +143,7 @@ public class Advertisement {
                 likeTo = false;
             } else {
                 System.out.println("Something went wrong! Try again.");
+
             }
         }
     }

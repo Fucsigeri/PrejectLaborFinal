@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="294.225" y="860.0">com.advertisements.FileManagger</node>
+    <node x="191.0" y="452.0">com.users.Employer</node>
+    <node x="400.0582010582011" y="1178.0">com.company.Main</node>
+    <node x="680.3378306878308" y="452.0">com.users.Employee</node>
+    <node x="0.0" y="529.5">com.users.Admin</node>
+    <node x="446.3378306878307" y="320.0">com.advertisements.Advertisement</node>
+    <node x="330.17962962962963" y="0.0">com.users.User</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.company.Main" target="com.users.Admin">
+      <point x="-123.75" y="-180.0" />
+      <point x="411.3082010582011" y="1158.0" />
+      <point x="51.5" y="1158.0" />
+      <point x="51.5" y="840.0" />
+      <point x="28.5" y="840.0" />
+      <point x="-57.0" y="25.5" />
+    </edge>
+    <edge source="com.company.Main" target="com.advertisements.Advertisement">
+      <point x="33.75" y="-180.0" />
+      <point x="568.8082010582011" y="1118.0" />
+      <point x="664.9809523809524" y="1118.0" />
+      <point x="664.9809523809524" y="810.0" />
+      <point x="638.9378306878307" y="810.0" />
+      <point x="85.60000000000002" y="235.0" />
+    </edge>
+    <edge source="com.company.Main" target="com.users.Employer">
+      <point x="-78.75" y="-180.0" />
+      <point x="456.3082010582011" y="1138.0" />
+      <point x="236.85820105820102" y="1138.0" />
+      <point x="236.85820105820102" y="840.0" />
+      <point x="212.2" y="840.0" />
+      <point x="-84.80000000000001" y="103.0" />
+    </edge>
+    <edge source="com.advertisements.FileManagger" target="com.users.Employer">
+      <point x="-79.74999999999994" y="-114.0" />
+      <point x="373.975" y="840.0" />
+      <point x="381.80000000000007" y="840.0" />
+      <point x="84.80000000000007" y="103.0" />
+    </edge>
+    <edge source="com.advertisements.Advertisement" target="com.advertisements.FileManagger">
+      <point x="0.0" y="235.0" />
+      <point x="553.3378306878308" y="840.0" />
+      <point x="533.475" y="840.0" />
+      <point x="79.75" y="-114.0" />
+    </edge>
+    <edge source="com.company.Main" target="com.advertisements.FileManagger">
+      <point x="-11.25" y="-180.0" />
+      <point x="523.8082010582011" y="1108.0" />
+      <point x="453.725" y="1108.0" />
+      <point x="0.0" y="114.0" />
+    </edge>
+    <edge source="com.users.Employee" target="com.users.User">
+      <point x="-48.0" y="-103.0" />
+      <point x="728.3378306878308" y="300.0" />
+      <point x="460.90185185185186" y="300.0" />
+      <point x="40.22222222222223" y="125.0" />
+    </edge>
+    <edge source="com.advertisements.FileManagger" target="com.advertisements.Advertisement">
+      <point x="15.950000000000045" y="-114.0" />
+      <point x="469.67500000000007" y="840.0" />
+      <point x="467.73783068783075" y="840.0" />
+      <point x="-85.6" y="235.0" />
+    </edge>
+    <edge source="com.users.Admin" target="com.users.User">
+      <point x="-42.75" y="-25.5" />
+      <point x="42.75" y="270.0" />
+      <point x="340.2351851851852" y="270.0" />
+      <point x="-80.44444444444446" y="125.0" />
+    </edge>
+    <edge source="com.company.Main" target="com.users.Employee">
+      <point x="101.25" y="-180.0" />
+      <point x="636.3082010582011" y="1148.0" />
+      <point x="831.7818783068783" y="1148.0" />
+      <point x="831.7818783068783" y="840.0" />
+      <point x="853.1378306878307" y="840.0" />
+      <point x="76.80000000000007" y="103.0" />
+    </edge>
+    <edge source="com.advertisements.FileManagger" target="com.users.Admin">
+      <point x="-143.5499999999999" y="-114.0" />
+      <point x="310.17500000000007" y="830.0" />
+      <point x="142.5" y="830.0" />
+      <point x="57.0" y="25.5" />
+    </edge>
+    <edge source="com.company.Main" target="com.users.User">
+      <point x="123.75" y="-180.0" />
+      <point x="658.8082010582011" y="1158.0" />
+      <point x="882.8378306878308" y="1158.0" />
+      <point x="882.8378306878308" y="280.0" />
+      <point x="501.1240740740741" y="280.0" />
+      <point x="80.44444444444446" y="125.0" />
+    </edge>
+    <edge source="com.users.Employer" target="com.users.User">
+      <point x="-53.0" y="-103.0" />
+      <point x="244.0" y="290.0" />
+      <point x="380.4574074074074" y="290.0" />
+      <point x="-40.22222222222223" y="125.0" />
+    </edge>
+    <edge source="com.advertisements.FileManagger" target="com.users.Employee">
+      <point x="143.54999999999995" y="-114.0" />
+      <point x="597.275" y="840.0" />
+      <point x="737.9378306878307" y="840.0" />
+      <point x="-38.39999999999999" y="103.0" />
+    </edge>
+    <edge source="com.advertisements.FileManagger" target="com.users.User">
+      <point x="-47.849999999999966" y="-114.0" />
+      <point x="405.875" y="840.0" />
+      <point x="420.0332010582011" y="840.0" />
+      <point x="0.0" y="125.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.48606465997770343" x="-503.0825688073394" y="1751.0825688073396" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
