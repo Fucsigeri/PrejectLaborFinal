@@ -157,7 +157,7 @@ public class Main {
                         advertisement.listAds();
                         break;
                     case 5:
-                        init();
+                        System.out.println("Logging out...");
                         break;
                     default:
                         System.out.println("Wrong menu item");
