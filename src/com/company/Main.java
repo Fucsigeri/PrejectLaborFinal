@@ -52,13 +52,30 @@ public class Main {
                         choice = userLoginValidation();
                         break;
                     case 4:
+                        do {
+                            System.out.println("You logged in as guest");
+                            System.out.println("Please choose a menu point:");
+                            System.out.println("1. List advertisements");
+                            System.out.println("2. Log out");
+                            choice = input.nextInt();
+                            switch (choice){
+                                case 1:
+                                    advertisement.listAds();
+                                    break;
+                                case 2:
+                                    System.out.println("Loggin out...");
+                                    break;
+                            }
+                        }while (choice!=2);
+                        break;
+                    case 5:
                         System.out.println("Bye");
                         break;
                     default:
                         System.out.println("Wrong menu item");
                         break;
                 }
-            }while(choice!=4);
+            }while(choice!=5);
         }catch(Exception ex){
             System.out.println("Something went wrong! Please try again.");
             init();
@@ -219,7 +236,8 @@ public class Main {
     private void printMenu() {
         System.out.println("1. Register as Employee");
         System.out.println("2. Register as Employer");
-        System.out.println("3. Sign in");
-        System.out.println("4. Exit");
+        System.out.println("3. Sign in as registered user");
+        System.out.println("4. Sign in as guest");
+        System.out.println("5. Exit");
     }
 }
