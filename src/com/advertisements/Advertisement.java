@@ -104,7 +104,7 @@ public class Advertisement {
         int advExist = listFuckinAds(currentUserID);
 
         if(advExist == 1) {
-            System.out.println("Which advertisement do you like to modify?");
+            System.out.println("Which advertisement do you like to modify? (ID)");
             int idx = input.nextInt();
             System.out.println(adList.get(idx));
             adList.remove(idx);
@@ -149,6 +149,6 @@ public class Advertisement {
 
     @Override
     public String toString() {
-        return id + "ID " + title + "\n" + details +"\n\n";
+        return id + " ID " + title + "\n" + details +"\n";
     }
 }
