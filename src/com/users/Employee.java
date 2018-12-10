@@ -47,9 +47,8 @@ public class Employee extends User {
                 '}'+super.toString();
     }
 
-    public void registration() {
+    public Employee registration() {
         Scanner input = new Scanner(System.in);
-        int currId = userList.size();
 
         System.out.println("Username:");
         String usernm = input.nextLine();
@@ -66,6 +65,6 @@ public class Employee extends User {
         System.out.println("Your phone number:");
         int phnNumber = input.nextInt();
 
-        userList.add(currId, new Employee(currId ,usernm, passwrd, nm, age, phnNumber));
+        return new Employee(1,usernm,passwrd,name,age,phoneNumber);
     }
 }

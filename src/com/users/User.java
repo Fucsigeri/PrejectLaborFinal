@@ -7,9 +7,6 @@ import java.util.*;
 
 public class User{
 
-
-    public List<User> userList = new LinkedList<>();
-
     private int userRole; // Munkavallalo-e vagy Munkaltato
     private String username;
     private String password;
@@ -36,10 +33,6 @@ public class User{
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public void setUserRole(int userRole) {
-        this.userRole = userRole;
     }
 
     public int getUserRole() {

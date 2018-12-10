@@ -48,9 +48,8 @@ public class Employer extends User {
                 '}'+super.toString();
     }
 
-    public void registration() {
+    public Employer registration() {
         Scanner input = new Scanner(System.in);
-        int currId = userList.size();
 
         System.out.println("Username:");
         String usernm = input.nextLine();
@@ -67,6 +66,6 @@ public class Employer extends User {
         System.out.println("Company's location: ");
         String loc = input.nextLine();
 
-        userList.add(currId, new Employer(currId ,usernm, passwrd, nm, mail, loc));
+        return new Employer(2, usernm, passwrd, nm, mail, loc);
     }
 }

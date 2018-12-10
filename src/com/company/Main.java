@@ -55,48 +55,25 @@ public class Main {
                 }
             }while(choice!=5);
         }catch(Exception ex){
-            System.out.println("Wrong menu item");
+            System.out.println("Something went wrong! Please try again.");
             init();
         }
     }
 
     private void printRegisterMenuForEmployer(){
         System.out.println("Create an Employer account:");
-        Employer er = (Employer) createEmployer();
+        Employer er = (Employer) employer.registration();
         userList.add(er);
         er.setID(userList.size());
-    }
-    private User createEmployer(){
-        Scanner input = new Scanner(System.in);
-        String userName,password,companyName,email,location;
-        int userRole;
-        userName = input.nextLine();
-        password = input.nextLine();
-        companyName = input.nextLine();
-        email = input.nextLine();
-        location = input.nextLine();
-        return new Employer(2,userName,password,companyName,email,location);
     }
 
 
     private void printRegisterMenuForEmployee(){
         System.out.println("Create an Employee account:");
-        Employee ee = (Employee) createEmployee();
+        Employee ee = (Employee) employee.registration();
         userList.add(ee);
         ee.setID(userList.size());
         FileManagger.saveUsers(userList);
-    }
-
-    private Employee createEmployee(){
-        Scanner input = new Scanner(System.in);
-        String userName, password,name;
-        int age,phoneNumber;
-        userName = input.nextLine();
-        password = input.nextLine();
-        name = input.nextLine();
-        age = Integer.parseInt(input.nextLine());
-        phoneNumber = Integer.parseInt(input.nextLine());
-        return new Employee(1,userName,password,name,age,phoneNumber);
     }
 
     private int userLoginValidation(){
@@ -114,9 +91,9 @@ public class Main {
                 i_password = input.nextLine();
                 if(userList.get(i).getPassword().equals(i_password)){
                     if(userList.get(i).getUserRole() == 1) {
-                        startSession();
+                        startSession(i_userName,userList.get(i).getUserRole());
                     } else if(userList.get(i).getUserRole() == 2){
-                        startSession();
+                        startSession(i_userName,userList.get(i).getUserRole());
                     } else if(userList.get(i).getUserRole() == 3){
                         startSessionForAdmin();
                     }
@@ -132,8 +109,22 @@ public class Main {
     } // ha sikeresen bejelentkezett indul egy uj session ahol csak szemelyre szabottan o lajta a dolgokat
 
 
-    private void startSession(){
-        System.out.println("you started a session as employee");
+    private void startSession(String usrnm, int roleid){
+        String roleString="";
+        switch (roleid){
+            case 1:
+                roleString=" Employee";
+                break;
+            case 2:
+                roleString=" Employer";
+                break;
+            case 3:
+                roleString=" Admin";
+                break;
+            default:
+                break;
+        }
+        System.out.println(usrnm + " started a session as" + roleString);
         Scanner input = new Scanner(System.in);
         int choice;
         do{
