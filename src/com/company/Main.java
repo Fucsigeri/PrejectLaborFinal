@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    List<User> userList = FileManagger.getUsers();
+    List<User> userList;
     Advertisement advertisement = new Advertisement();
-    User user = new User();
     Employer employer = new Employer();
     Employee employee = new Employee();
 
@@ -23,7 +22,10 @@ public class Main {
 
     private void init() {
         advertisement.adList = FileManagger.getAdvertisements();
+        userList =  FileManagger.getUsers();
+
         showMenu();
+        FileManagger.saveAdvertisements(advertisement.adList);
         FileManagger.saveUsers(userList);
     }
 
@@ -63,16 +65,17 @@ public class Main {
     private void printRegisterMenuForEmployer(){
         System.out.println("Create an Employer account:");
         Employer er = (Employer) employer.registration();
-        userList.add(er);
         er.setID(userList.size());
+        userList.add(er);
+        FileManagger.saveUsers(userList);
     }
 
 
     private void printRegisterMenuForEmployee(){
         System.out.println("Create an Employee account:");
         Employee ee = (Employee) employee.registration();
-        userList.add(ee);
         ee.setID(userList.size());
+        userList.add(ee);
         FileManagger.saveUsers(userList);
     }
 
@@ -137,12 +140,15 @@ public class Main {
             switch(choice){
                 case 1:
                     advertisement.newAd();
+                    FileManagger.saveAdvertisements(advertisement.adList);
                     break;
                 case 2:
                     advertisement.modifyAd();
+                    FileManagger.saveAdvertisements(advertisement.adList);
                     break;
                 case 3:
                     advertisement.deleteAd();
+                    FileManagger.saveAdvertisements(advertisement.adList);
                     break;
                 case 4:
                     advertisement.listAds();

@@ -1,5 +1,7 @@
 package com.users;
 
+import com.advertisements.FileManagger;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
