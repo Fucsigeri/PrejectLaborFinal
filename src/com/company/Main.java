@@ -13,6 +13,9 @@ import java.util.Scanner;
 public class Main {
     List<User> userList = FileManagger.getUsers();
     Advertisement advertisement = new Advertisement();
+    User user = new User();
+    Employer employer = new Employer();
+    Employee employee = new Employee();
 
     public static void main(String[] args) {
         new Main().init();

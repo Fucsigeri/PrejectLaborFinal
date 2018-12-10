@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Employee extends User {
-    public List<Employee> list = new LinkedList<>();
 
     String name;
     int age;
@@ -50,7 +49,7 @@ public class Employee extends User {
 
     public void registration() {
         Scanner input = new Scanner(System.in);
-        int currId = list.size();
+        int currId = userList.size();
 
         System.out.println("Username:");
         String usernm = input.nextLine();
@@ -67,6 +66,6 @@ public class Employee extends User {
         System.out.println("Your phone number:");
         int phnNumber = input.nextInt();
 
-        list.add(currId, new Employee(currId ,usernm, passwrd, nm, age, phnNumber));
+        userList.add(currId, new Employee(currId ,usernm, passwrd, nm, age, phnNumber));
     }
 }

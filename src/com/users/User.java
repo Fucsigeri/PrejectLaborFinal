@@ -3,13 +3,12 @@ package com.users;
 import com.advertisements.Advertisement;
 import com.advertisements.FileManagger;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class User{
 
-    Advertisement[] advs;
+
+    public List<User> userList = new LinkedList<>();
 
     private int userRole; // Munkavallalo-e vagy Munkaltato
     private String username;
@@ -39,15 +38,6 @@ public class User{
         this.ID = ID;
     }
 
-    public Advertisement[] getAdvs() {
-        return advs;
-    }
-
-    public void setAdvs(Advertisement[] advs) {
-        this.advs = advs;
-    }
-
-
     public void setUserRole(int userRole) {
         this.userRole = userRole;
     }
@@ -71,7 +61,7 @@ public class User{
                 "userRole=" + userRole +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", advs=" + Arrays.toString(advs) +
+                ", advs=" +
                 '}' + "\n";
     }
 

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Employer extends User {
-    public List<Employer> list = new LinkedList<>();
 
     String companyName;
     String email;
@@ -51,7 +50,7 @@ public class Employer extends User {
 
     public void registration() {
         Scanner input = new Scanner(System.in);
-        int currId = list.size();
+        int currId = userList.size();
 
         System.out.println("Username:");
         String usernm = input.nextLine();
@@ -68,6 +67,6 @@ public class Employer extends User {
         System.out.println("Company's location: ");
         String loc = input.nextLine();
 
-        list.add(currId, new Employer(currId ,usernm, passwrd, nm, mail, loc));
+        userList.add(currId, new Employer(currId ,usernm, passwrd, nm, mail, loc));
     }
 }
