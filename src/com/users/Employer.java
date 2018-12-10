@@ -41,11 +41,7 @@ public class Employer extends User {
 
     @Override
     public String toString() {
-        return "Employer{" +
-                "companyName='" + companyName + '\'' +
-                ", email='" + email + '\'' +
-                ", location='" + location + '\'' +
-                '}'+super.toString();
+        return super.toString() + " Company name: " + companyName + " E-mail: " + email + " Location: "+ location + "\n";
     }
 
     public Employer registration() {
