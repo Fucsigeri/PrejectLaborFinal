@@ -11,11 +11,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     List<User> userList = FileManagger.getUsers();
     Advertisement advertisement = new Advertisement();
     User user = new User();
     Employer employer = new Employer();
     Employee employee = new Employee();
+    public int current_user;
 
     public static void main(String[] args) {
         new Main().init();
@@ -91,10 +93,13 @@ public class Main {
                 i_password = input.nextLine();
                 if(userList.get(i).getPassword().equals(i_password)){
                     if(userList.get(i).getUserRole() == 1) {
+                        current_user = userList.get(i).getID();
                         startSession(i_userName,userList.get(i).getUserRole());
                     } else if(userList.get(i).getUserRole() == 2){
+                        current_user = userList.get(i).getID();
                         startSession(i_userName,userList.get(i).getUserRole());
                     } else if(userList.get(i).getUserRole() == 3){
+                        current_user = userList.get(i).getID();
                         startSessionForAdmin();
                     }
                     return succesfull_login;                        // kilepesi ertek a fomenubol
@@ -136,13 +141,13 @@ public class Main {
             choice = input.nextInt();
             switch(choice){
                 case 1:
-                    advertisement.newAd();
+                    advertisement.newAd(current_user);
                     break;
                 case 2:
-                    advertisement.modifyAd();
+                    advertisement.modifyAd(current_user);
                     break;
                 case 3:
-                    advertisement.deleteAd();
+                    advertisement.deleteAd(current_user);
                     break;
                 case 4:
                     advertisement.listAds();

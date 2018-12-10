@@ -25,6 +25,7 @@ public class FileManagger {
             writeString += array[i].getId() + ";";
             writeString += array[i].getTitle() + ";";
             writeString += array[i].getDetails() + ";";
+            writeString += array[i].getAddedByUserID() + ";";
             writeString += "\n";
         }
         writeToFile(writeString,"Advertisements");
@@ -41,8 +42,8 @@ public class FileManagger {
             int id = Integer.parseInt(parts[0]);
             String title = parts[1];
             String details = parts[2];
-
-            aList.add(new Advertisement(id, title, details));
+            int current_user_id = Integer.parseInt(parts[3]);
+            aList.add(new Advertisement(id, title, details,current_user_id));
         }
         return aList;
     }
