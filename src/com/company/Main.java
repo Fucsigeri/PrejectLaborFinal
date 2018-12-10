@@ -63,6 +63,7 @@ public class Main {
         userList.add(er);
         er.setID(userList.size());
     }
+
     private User createEmployer(){
         Scanner input = new Scanner(System.in);
         String userName,password,companyName,email,location;

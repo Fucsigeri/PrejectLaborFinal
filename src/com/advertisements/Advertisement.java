@@ -1,17 +1,14 @@
 package com.advertisements;
 
-import com.company.Main;
-
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import com.advertisements.FileManagger;
 
 public class Advertisement {
     private int id;
     private String title;
     private String details;
+    private int owner;
 
     public List<Advertisement> adList = new LinkedList<>();
 
@@ -21,15 +18,17 @@ public class Advertisement {
                 "id=" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", details='" + details + '\'' +
+                ", owner='" + owner + '\'' +
                 '}';
     }
 
     public  Advertisement(){}
 
-    public Advertisement(int id, String title, String details) {
+    public Advertisement(int id, String title, String details, int owner) {
         this.id = id;
         this.title = title;
         this.details = details;
+        this.owner = owner;
     }
 
 
@@ -71,7 +70,7 @@ public class Advertisement {
         String currTitle = input.nextLine();
         System.out.println("Details: ");
         String currDetails = input.nextLine();
-        adList.add(currId, new Advertisement(currId, currTitle, currDetails));
+        adList.add(currId, new Advertisement(currId, currTitle, currDetails,owner));
         highlightQuestion(currId);
         FileManagger.saveAdvertisements(adList);
     }
@@ -117,5 +116,13 @@ public class Advertisement {
                 System.out.println("Something went wrong! Try again.");
             }
         }
+    }
+
+    public int getOwner() {
+        return owner;
+    }
+
+    public void setOwner(int owner) {
+        this.owner = owner;
     }
 }
