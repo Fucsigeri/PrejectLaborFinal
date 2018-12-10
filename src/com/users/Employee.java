@@ -61,6 +61,6 @@ public class Employee extends User {
         System.out.println("Your phone number:");
         int phnNumber = input.nextInt();
 
-        return new Employee(1,usernm,passwrd,name,age,phoneNumber);
+        return new Employee(1,usernm,passwrd,nm,age,phnNumber);
     }
 }

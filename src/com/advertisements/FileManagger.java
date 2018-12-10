@@ -106,8 +106,8 @@ public class FileManagger {
         writeString += e.getUsername() + ";";
         writeString += e.getPassword() + ";";
         writeString += e.getName() + ";";
-        writeString += e.getAge() + ";";
-        writeString += e.getPhoneNumber() + ";";
+        writeString += Integer.toString(e.getAge()) + ";";
+        writeString += Integer.toString(e.getPhoneNumber()) + ";";
         writeString += "\n";
 
         return writeString;

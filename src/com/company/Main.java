@@ -195,7 +195,7 @@ public class Main {
                         FileManagger.saveAdvertisements(advertisement.adList);
                         break;
                     case 6:
-                        init();
+                        System.out.println("Logging out....");
                         break;
                     default:
                         System.out.println("Wrong menu item");
