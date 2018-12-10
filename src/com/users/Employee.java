@@ -1,21 +1,29 @@
 package com.users;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Employee extends User {
+    public List<Employee> list = new LinkedList<>();
+
     String name;
-    int  Age;
+    int age;
     int phoneNumber;
+
+    public  Employee(){}
 
     public Employee(int id, int userRole, String username, String password, String name, int age, int phoneNumber) {
         super(id,userRole, username, password);
         this.name = name;
-        Age = age;
+        this.age = age;
         this.phoneNumber = phoneNumber;
     }
 
     public Employee(int userRole, String username, String password, String name, int age, int phoneNumber) {
         super(userRole, username, password);
         this.name = name;
-        Age = age;
+        this.age = age;
         this.phoneNumber = phoneNumber;
     }
 
@@ -24,7 +32,7 @@ public class Employee extends User {
     }
 
     public int getAge(){
-        return Age;
+        return age;
     }
 
     public int getPhoneNumber(){
@@ -35,8 +43,30 @@ public class Employee extends User {
     public String toString() {
         return "Employee{" +
                 "name='" + name + '\'' +
-                ", Age=" + Age +
+                ", age=" + age +
                 ", phoneNumber=" + phoneNumber +
                 '}'+super.toString();
+    }
+
+    public void registration() {
+        Scanner input = new Scanner(System.in);
+        int currId = list.size();
+
+        System.out.println("Username:");
+        String usernm = input.nextLine();
+
+        System.out.println("Password:");
+        String passwrd = input.nextLine();
+
+        System.out.println("What is your name?");
+        String nm = input.nextLine();
+
+        System.out.println("How old are you?");
+        int age = input.nextInt();
+
+        System.out.println("Your phone number:");
+        int phnNumber = input.nextInt();
+
+        list.add(currId, new Employee(currId ,usernm, passwrd, nm, age, phnNumber));
     }
 }

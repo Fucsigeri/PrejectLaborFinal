@@ -71,7 +71,7 @@ public class Advertisement {
         String currTitle = input.nextLine();
         System.out.println("Details: ");
         String currDetails = input.nextLine();
-        adList.add(adList.size(), new Advertisement(currId, currTitle, currDetails));
+        adList.add(currId, new Advertisement(currId, currTitle, currDetails));
         highlightQuestion(currId);
         FileManagger.saveAdvertisements(adList);
     }

@@ -1,9 +1,17 @@
 package com.users;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Employer extends User {
+    public List<Employer> list = new LinkedList<>();
+
     String companyName;
     String email;
     String location; // ceg helye
+
+    public Employer(){}
 
     public Employer(int userRole, String username, String password, String companyName, String email, String location) {
         super(userRole, username, password);
@@ -39,5 +47,27 @@ public class Employer extends User {
                 ", email='" + email + '\'' +
                 ", location='" + location + '\'' +
                 '}'+super.toString();
+    }
+
+    public void registration() {
+        Scanner input = new Scanner(System.in);
+        int currId = list.size();
+
+        System.out.println("Username:");
+        String usernm = input.nextLine();
+
+        System.out.println("Password:");
+        String passwrd = input.nextLine();
+
+        System.out.println("What is your company's name?");
+        String nm = input.nextLine();
+
+        System.out.println("E-mail address: ");
+        String mail = input.nextLine();
+
+        System.out.println("Company's location: ");
+        String loc = input.nextLine();
+
+        list.add(currId, new Employer(currId ,usernm, passwrd, nm, mail, loc));
     }
 }
